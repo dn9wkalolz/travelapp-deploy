@@ -1,9 +1,11 @@
 import React, { useRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import mapboxgl from 'mapbox-gl';
+import mapboxgl from 'mapbox-gl/dist/mapbox-gl';
+import MapboxWorker from 'mapbox-gl/dist/mapbox-gl-csp-worker';
 import getBoundaryColor from './getBoundaryColor';
 import getPhrase from './languageSwitcher';
 
+mapboxgl.workerClass = MapboxWorker;
 mapboxgl.accessToken = 'pk.eyJ1IjoiZmFudG9td2Fsa2VyIiwiYSI6ImNramxmcXd2eTIyc2Iyc2xvcTJ3cmdsNmwifQ.mU8FFb3Kc3cihmCMAk6Spw';
 
 const CountryMap = ({ lang, countryInf }) => {

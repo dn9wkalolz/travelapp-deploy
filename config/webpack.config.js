@@ -392,6 +392,10 @@ module.exports = function (webpackEnv) {
             // Process application JS with Babel.
             // The preset includes JSX, Flow, TypeScript, and some ESnext features.
             {
+              test: /\bmapbox-gl-csp-worker.js\b/i,
+              use: { loader: "worker-loader" },
+            },
+            {
               test: /\.(js|mjs|jsx|ts|tsx)$/,
               include: paths.appSrc,
               loader: require.resolve('babel-loader'),
@@ -407,7 +411,6 @@ module.exports = function (webpackEnv) {
                     },
                   ],
                 ],
-                ignore: [ './node_modules/mapbox-gl/dist/mapbox-gl.js' ],
                 
                 plugins: [
                   [
